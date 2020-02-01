@@ -1,0 +1,36 @@
+<div class="yield">
+  <h1>ホテルを予約する</h1>
+  <%= form_with(model: [@hotel, @reservation], local: true) do |form| %>
+
+    <div class ="form-group">
+      <%= form.label :rooms %> :
+      <%= form.select :rooms, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]    %>
+    </div>
+    <div class ="form-group">
+      <%= form.label :adults %> :
+      <%= form.select :adults, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]    %>
+    </div>
+    <div class ="form-group">
+      <%= form.label :children %> :
+      <%= form.select :children, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]    %>  
+    </div>
+    <div class ="form-group">
+      <%= form.label :check_in %> :
+      <%= raw sprintf(form.date_select(:check_in, use_month_numbers: true, date_separator: '%s'), '年', '月' ) + '日' %>
+    </div>
+
+    <div class ="form-group">
+      <%= form.label :check_out %> :
+      <%= raw sprintf(form.date_select(:check_out, use_month_numbers: true, date_separator: '%s'), '年', '月' ) + '日' %> 
+    </div>
+
+    <%= form.hidden_field :hotel_id, value: @hotel.id %>
+    <%= form.hidden_field :hotelname, value: @hotel.name %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+
+    <div class="actions">
+      <%= form.submit "   予約   ", data: { confirm: '予約を確定します。よろしいですか？' } %>
+    </div>  
+
+  <% end %>
+</div>

@@ -1,0 +1,40 @@
+<div class="yield">
+  <h1>予約内容を変更する</h1>
+
+  <%= form_with(model: [@hotel, @reservation], local: true) do |form| %>
+
+    <div class ="field">
+      <%= form.label :rooms %>
+      <%= form.select :rooms, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]] %>
+
+    </div>
+    <div class ="field">
+      <%= form.label :adults %>
+      <%= form.select :adults, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]] %>
+      
+    </div>
+    <div class ="field">
+      <%= form.label :children %>
+      <%= form.select :children, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]] %>
+      
+    </div>
+
+    <div class ="field">
+      <%= form.label :check_in %>
+      <%= form.date_select :check_in %>
+    </div>
+
+    <div class ="field">
+      <%= form.label :check_out %>
+      <%= form.date_select :check_out %>
+    </div>
+    <%= form.hidden_field :hotel_id, value: @hotel.id %>
+    
+
+    <div class="actions">
+      <%= form.submit " 更新する ", data: { confirm: '予約内容を変更します。よろしいですか？' } %>
+
+    </div>  
+
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>お問い合わせ内容を入力してください</h1>
+
+  <%= form_with(model: @contact, local: true) do |form| %>
+    <div class ="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class ="field">
+      <%= form.label :mail %>
+      <%= form.text_field :mail %>
+    </div>
+    <div class ="field">
+      <%= form.label :body %>
+      <%= form.text_area :body %>
+      
+    </div>
+    <div class="actions">
+      <%= form.submit data: { confirm: '上記のお問い合わせ内容で送信してよろしいですか？' } %>
+    </div>  
+  <% end %>
+</div>

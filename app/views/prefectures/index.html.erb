@@ -1,0 +1,67 @@
+<div class="yield">
+	<div class="search">
+	  <%= search_form_for @q do |f| %>
+	    <%= f.label :name, "ホテルを検索" %>
+	    <%= f.search_field :name_cont, :size=>"30"  %>
+	    
+
+	    <%= f.submit "検索" %>
+	  <% end %>
+	</div> 
+
+	<h1>prefecture all</h1>
+	<% @prefectures.each do |prefecture| %>
+	  <div class="prefectures">
+	  	<%= link_to prefecture.name, prefecture_path(prefecture) %>
+	  </div>
+	  
+	<% end %>
+
+
+
+</div>
+
+<div class="container">
+	<div class="row">
+	  <% @prefectures.each do |prefecture| %>
+			<div class="col-5 bg-secondary m-3">
+				
+		      <%= link_to prefecture.name, prefecture_path(prefecture) %>
+					<div class="row">
+						
+							<div class="col-5 bg-info">
+								<% if prefecture.picture.present? %>
+								  <%= image_tag(prefecture.picture_url, width: '100%', height: '100%') %>								  
+								<% else %>
+								  
+								<% end %>								
+								
+							</div>
+
+							<div class="col-5 bg-success">
+								p jijijij
+								
+							</div>
+						
+					</div>
+			</div>
+		<% end %>
+	</div>
+
+</div>
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>

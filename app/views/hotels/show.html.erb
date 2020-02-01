@@ -1,0 +1,35 @@
+<div class="yield">
+  <div class="search">
+	  <%= search_form_for @q do |f| %>
+	    <%= f.label :name, "ホテルを検索" %>
+	    <%= f.search_field :name_cont, :size=>"30" %>
+	    <%= f.submit "検索" %>
+		<% end %>
+	</div> 
+
+
+	<h1><%= @hotel.name %></h1>
+	<div class="container">
+	  <div class="row">
+	    <div class="col-8">
+	    	<p><%= image_tag(@hotel.picture_url, width: 700) if @hotel.picture.present? %></p>
+	    </div>
+	    <div class="col-4">
+	    	<p>詳細: <%= @hotel.body %></p>
+	    	<p><a href="/hotels/<%= @hotel.id%>/reservations/new" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">予約</a></p>
+	    </div>
+	  </div>
+	</div>
+
+
+	<p>評価：<%= @reviews.average(:rating) %>/ 5.0</p>
+
+
+	<p><%= link_to 'レビューを見る',hotel_reviews_path(@hotel) %></p>
+
+
+
+</div>
+
+
+

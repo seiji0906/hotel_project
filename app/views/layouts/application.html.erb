@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SubHotelProjects</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid mx-0">
+      <div class="row">
+        <div class ="header1 col-12 bg-hoe">
+          <div class="row">
+            <ul class="gnav col-2">
+              <div class="row">
+                  <li class="col-12">
+                    <a href="">ホテル一覧</a>
+                    <ul>
+                      <li>
+                        関東
+                        <ul>
+                          <li><a href="/prefectures/2">東京</a></li>
+                          <li><a href="/prefectures/3">神奈川</a></li>
+                        </ul>
+                      </li>
+                      <li>関西</li>
+                    </ul>
+                  </li>
+                </div>
+            </ul>
+          <div class ="right col-10">
+            <ul>
+              <% if user_signed_in? %>
+                <li><a href="/users/edit"><%= image_tag current_user.avatar.url, width: 30 if current_user.avatar? %></a></li>
+                <li><%= link_to 'プロフィール', edit_user_registration_path, :class => 'navbar-link',:style=>"color:white;" %></li>
+                <li><%= link_to "予約履歴", user_reservations_path(current_user), :class => 'navbar-link',:style=>"color:white;" %></li> 
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link',:style=>"color:white;"  %></li> 
+                <li><%= link_to "ホーム", root_path, :class => 'navbar-link',:style=>"color:white;"  %></li>
+                <li>
+                  <nav class="navbar navbar-light  p-0">
+                    <form class="form-inline">
+                      <div class="search">
+                        <%= search_form_for @q do |f| %>
+                          
+                          <%= f.search_field :name_cont, :size=>"30", class: "form-control mr-sm-2", :placeholder=>"ホテルを検索" %>
+                          <%= f.submit "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
+                        <% end %>
+                      </div>
+                    </form>
+                  </nav>
+                </li>
+              <% else %>
+                <li><%= link_to "登録", new_user_registration_path, :class => 'navbar-link',:style=>"color:white;"  %></li>
+                <li><%= link_to "ログイン", new_user_session_path, :class => 'navbar-link',:style=>"color:white;"  %></li>
+                <li><%= link_to "ホーム", root_path, :class => 'navbar-link',:style=>"color:white;"  %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        </div>
+        <div class = "header2 col-12" >
+          <a href="/prefectures"><img class ="header_logo" src="https://t17.pimg.jp/014/890/767/1/14890767.jpg" width="100" height="100" ></a>
+
+        </div>
+        <div class ="header3 col-12">
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+        <div class ="container-max">
+          <% if flash[:notice] %>
+            <div class="flash">
+              <%= flash[:notice] %>
+            </div>
+          <% end %>      
+
+
+
+
+      <%= yield %>
+        
+    </div>
+    <div class="js">
+      <!-- divを自分で書くのではなく、jsでかけて、かついくらでも生成できる（ドットインストール参考） -->
+      <div class="box" id="target1"></div>
+      <div class="box" id="target2"></div>
+      <div class="box" id="target3"></div>
+
+      <script>
+        <!-- コードを厳格に -->
+        'use strict';
+        // 定数　　document~~を何度も書くのだるいからtargetと定義
+        const target1 = document.getElementById('target1');
+        const target2 = document.getElementById('target2');
+        const target3 = document.getElementById('target3');
+
+
+
+      target1.addEventListener('click', () => {
+        // document.getElementById('target').style.background = 'pink';
+        // document.getElementById('target').style.borderRadius = '50%';
+        // .add('circle')でcssで指定できる
+        // .addの部分を.toggleにすることでもう一度クリックすると直るようになる
+        target1.classList.toggle('circle');
+      });
+      target2.addEventListener('click', () => {
+        target2.classList.toggle('circle');
+      }); 
+      target3.addEventListener('click', () => {
+        target3.classList.toggle('circle');
+      }); 
+      </script>
+    </div>
+    <footer></footer>
+  </body>
+</html>

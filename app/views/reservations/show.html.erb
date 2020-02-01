@@ -1,0 +1,17 @@
+<div class="yield">
+  <h1>予約内容を確認</h1>
+
+    <p>部屋数：<%= @reservation.rooms %></p>
+    <p>大人：<%= @reservation.adults %></p>
+    <p>子供：<%= @reservation.children %></p>
+    <p>チェックイン：<%= @reservation.check_in %></p>
+    <p>チェックアウト：<%= @reservation.check_out %></p>
+
+    <p><%= link_to '予約内容を変更する', edit_hotel_reservation_path %></p>
+    <p><%= link_to '予約をキャンセルする', hotel_reservation_path(@hotel,@reservation), data: { confirm: '予約をキャンセルしてよろしいですか？' }, method: :delete %></p>
+    <p><%= link_to 'ホテル一覧へ戻る', hotels_path, class: "btn btn-dark" %></p>
+
+</div>
+
+
+

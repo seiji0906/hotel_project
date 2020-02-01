@@ -1,0 +1,16 @@
+.container
+
+  h1 レビュー詳細
+  p= @review.name
+  p= @review.rating
+  p= @review.title
+  p= @review.body
+  p= link_to 'ホテルの詳細へ戻る', hotel_path(@hotel)
+  - if user_signed_in?
+    - if current_user.id==@review.user_id
+      p= link_to 'レビューを削除', @reviews, data: {confirm: 'レビューを削除してよろしいですか？'}, method: :delete
+      p= link_to 'レビューを編集', edit_hotel_review_path(@hotel,@review)
+    - else
+
+
+

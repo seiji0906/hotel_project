@@ -1,0 +1,22 @@
+<div class="yield">
+
+	<h1>予約履歴</h1>
+
+	<% if @reservations.count == 0 %>
+	  <p>予約履歴はありません</p>
+	<% else %> 
+	  <p><%= @reservations.count %>件の履歴がありました</p>
+	<% end %>
+
+	<% @reservations.order(id: "DESC").each do |reservation| %>
+	  
+	  <p>
+	    <%= link_to reservation.hotelname, hotel_reservation_path(reservation.hotel_id,reservation) %>
+	    チェックイン<%= reservation.check_in %>
+	  </p>
+	  
+	    
+	<% end %>
+
+
+</div>

@@ -1,0 +1,43 @@
+<div class="yield">
+	<div class="search">
+	  <%= search_form_for @q do |f| %>
+	    <%= f.label :name, "ホテルを検索" %>
+	    <%= f.search_field :name_cont, :size=>"30" %>
+	    <%= f.submit "検索" %>
+		<% end %>
+</div> 
+
+	<h1>ホテルを見つける</h1>
+
+	<% if params[:q].present? %>
+	  <p><%= @hotel.count %>件がヒットしました</p>
+	<% else %>
+	  
+	<% end %>
+
+
+
+
+<% @hotel.order(:rating).each do |hotel| %>
+
+  <div class="card mb-3" style="min-width: 800px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <%= image_tag(hotel.picture_url, width: 350,height: 187) if hotel.picture.present? %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to hotel.name, hotel_path(hotel) %></h5>
+          <p class="card-text">
+            <p><%= hotel.body %></p>
+            <p><%= hotel.reviews.count %> 件のレビューがあります</p>
+            
+          </p>
+          <p class="card-text"><small class="text-muted">last updated at <%= hotel.updated_at %></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+

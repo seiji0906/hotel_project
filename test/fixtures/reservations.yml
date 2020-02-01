@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rooms: 1
+  adults: 1
+  children: 1
+  check_in: 2019-12-25
+  check_out: 2019-12-25
+
+two:
+  rooms: 1
+  adults: 1
+  children: 1
+  check_in: 2019-12-25
+  check_out: 2019-12-25

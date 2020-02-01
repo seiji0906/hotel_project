@@ -1,0 +1,18 @@
+<div class="yield">
+	<h1>レビュー一覧</h1>
+	<% @reviews.each do |review| %>
+	  
+	  <p>
+	    <%= link_to review.name, hotel_review_path(@hotel,review) %>
+	  </p>
+
+	    
+	<% end %>
+
+
+	<p>
+		<%= link_to 'レビューを追加', new_hotel_review_path(@hotel) %>
+	</p>
+
+
+</div>
