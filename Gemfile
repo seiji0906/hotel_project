@@ -28,7 +28,7 @@ gem 'ransack'
 gem 'jquery-rails'
 gem 'ratyrate'
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 gem 'slim-rails'
