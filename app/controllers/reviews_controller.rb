@@ -47,5 +47,4 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:name,:rating,:title,:body,:hotel_id,:user_id)
   end
-
 end
